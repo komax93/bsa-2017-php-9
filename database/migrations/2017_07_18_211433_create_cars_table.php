@@ -22,6 +22,7 @@ class CreateCarsTable extends Migration
             $table->integer('mileage')->unsigned();
             $table->float('price');
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')
