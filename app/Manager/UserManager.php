@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-
 use App\Entity\User;
 use App\Manager\Contract\UserManager as UserManagerContract;
 use App\Request\Contract\SaveUserRequest;
@@ -17,7 +16,7 @@ class UserManager implements UserManagerContract
      */
     public function findAll(): Collection
     {
-        // TODO: Implement findAll() method.
+        return User::all();
     }
 
     /**
@@ -28,7 +27,7 @@ class UserManager implements UserManagerContract
      */
     public function findById(int $id)
     {
-        // TODO: Implement findById() method.
+        return User::find($id);
     }
 
     /**
@@ -38,7 +37,7 @@ class UserManager implements UserManagerContract
      */
     public function findActive(): Collection
     {
-        // TODO: Implement findActive() method.
+        return User::where('is_active', 1)->get();
     }
 
     /**
@@ -49,7 +48,12 @@ class UserManager implements UserManagerContract
      */
     public function saveUser(SaveUserRequest $request): User
     {
-        // TODO: Implement saveUser() method.
+        $user = new User();
+        $user->first_name = $request->getFirstName();
+        $user->last_name = $request->getLastName();
+        $user->is_active = $request->getIsActive();
+
+        return $user->save();
     }
 
     /**
@@ -60,7 +64,8 @@ class UserManager implements UserManagerContract
      */
     public function deleteUser(int $userId)
     {
-        // TODO: Implement deleteUser() method.
+        $user = User::find($userId);
+        $user->delete();
     }
 
 }

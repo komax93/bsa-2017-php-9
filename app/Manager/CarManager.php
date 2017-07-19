@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-
 use App\Entity\Car;
 use App\Manager\Contract\CarManager as CarManagerContract;
 use App\Request\Contract\SaveCarRequest;
@@ -17,7 +16,7 @@ class CarManager implements CarManagerContract
      */
     public function findAll(): Collection
     {
-        // TODO: Implement findAll() method.
+        return Car::all();
     }
 
     /**
@@ -28,7 +27,7 @@ class CarManager implements CarManagerContract
      */
     public function findById(int $id)
     {
-        // TODO: Implement findById() method.
+        return Car::find($id);
     }
 
     /**
@@ -38,7 +37,10 @@ class CarManager implements CarManagerContract
      */
     public function findCarsFromActiveUsers(): Collection
     {
-        // TODO: Implement findCarsFromActiveUsers() method.
+        $car = new Car();
+        $cars = $car->where($car->user()->is_active, 1)->get();
+
+        return $cars;
     }
 
     /**
@@ -49,7 +51,16 @@ class CarManager implements CarManagerContract
      */
     public function saveCar(SaveCarRequest $request): Car
     {
-        // TODO: Implement saveCar() method.
+        $car = new Car();
+        $car->color = $request->getColor();
+        $car->model = $request->getModel();
+        $car->registration_number = $request->getRegistrationNumber();
+        $car->year = $request->getYear();
+        $car->mileage = $request->getMileage();
+        $car->price = $request->getPrice();
+        $car->user_id = $request->getUser()->id;
+
+        return $car->save();
     }
 
     /**
@@ -60,6 +71,7 @@ class CarManager implements CarManagerContract
      */
     public function deleteCar(int $carId)
     {
-        // TODO: Implement deleteCar() method.
+        $car = Car::find($carId);
+        $car->delete();
     }
 }
