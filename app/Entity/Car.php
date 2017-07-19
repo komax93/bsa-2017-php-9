@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Car
+use Illuminate\Database\Eloquent\Model;
+
+class Car extends Model
 {
     /**
      * The table associated with the model.
