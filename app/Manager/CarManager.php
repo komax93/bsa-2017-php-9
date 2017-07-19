@@ -59,8 +59,9 @@ class CarManager implements CarManagerContract
         $car->mileage = $request->getMileage();
         $car->price = $request->getPrice();
         $car->user_id = $request->getUser()->id;
+        $car->save();
 
-        return $car->save();
+        return $car;
     }
 
     /**
