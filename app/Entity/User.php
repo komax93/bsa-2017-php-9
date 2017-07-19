@@ -21,13 +21,6 @@ class User extends Model
     protected $fillable = ['first_name', 'last_name', 'is_active'];
 
     /**
-     * These fields can't be filled by user
-     *
-     * @var array
-     */
-    protected $guarded = ['id'];
-
-    /**
      * Convert is_active field to boolean type
      *
      * @var array

@@ -21,13 +21,6 @@ class Car extends Model
     protected $fillable = ['color', 'model', 'registration_number', 'year', 'mileage', 'price', 'user_id'];
 
     /**
-     * These fields can't be filled by user
-     *
-     * @var array
-     */
-    protected $guarded = ['id'];
-
-    /**
      * This method return belongsTo relationship from cars to users table
      *
      * @return mixed
