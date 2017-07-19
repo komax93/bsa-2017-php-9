@@ -18,9 +18,9 @@ class CreateCarsTable extends Migration
             $table->string('color');
             $table->string('model');
             $table->string('registration_number');
-            $table->integer('year')->unsigned();
-            $table->integer('mileage')->unsigned();
-            $table->float('price');
+            $table->integer('year')->unsigned()->nullable();
+            $table->integer('mileage')->unsigned()->nullable();
+            $table->float('price')->nullable();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 
