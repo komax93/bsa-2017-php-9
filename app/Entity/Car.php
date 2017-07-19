@@ -34,6 +34,6 @@ class Car extends Model
      */
     public function user()
     {
-        return $this->belongTo('App\Entity\User');
+        return $this->belongsTo('App\Entity\User');
     }
 }

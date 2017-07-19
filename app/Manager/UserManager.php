@@ -48,7 +48,7 @@ class UserManager implements UserManagerContract
      */
     public function saveUser(SaveUserRequest $request): User
     {
-        $user = new User();
+        $user = $request->getUser();
         $user->first_name = $request->getFirstName();
         $user->last_name = $request->getLastName();
         $user->is_active = $request->getIsActive();
@@ -68,5 +68,4 @@ class UserManager implements UserManagerContract
         $user = User::find($userId);
         $user->delete();
     }
-
 }
